@@ -1,15 +1,38 @@
-class PokemonsT1 {
-    constructor(poke1, poke2, poke3, poke4, poke5, poke6) {
-        this.poke1 = poke1
-        this.poke2 = poke2
-        this.poke3 = poke3
-        this.poke4 = poke4
-        this.poke5 = poke5
-        this.poke6 = poke6
+class Pokemon {
+    id;
+    nome;
+    baseExp;
+    constructor(id, nome, baseExp) {
+        this.id = id,
+        this.nome = nome,
+        this. baseExp = baseExp;
+
+        console.log(this)
     }
 
-
 }
+
+class Registro{
+    time1
+    baseExpT1
+    time2
+    baseExpT2
+
+    constructor(time1, baseExpSomaT1, time2, baseExpSomaT2){
+        this.time1 = time1;
+        this.baseExpT1 = baseExpSomaT1;
+        this.time2 = time2;
+        this.baseExpT2 = baseExpSomaT2;
+    }
+
+    imprimir(){
+
+    }
+}
+
+let registro = new Registro()
+
+registro.time1[i].nome
 
 class BancoDados {
 
@@ -75,21 +98,17 @@ let pokemon = [];
 time1.addEventListener("click", function(){
     let time1Id = adicionarPokemonTime1();
 
+
 })
 //Click botão time 2
 time2.addEventListener('click', function(){
     let time2Id = adicionarPokemonTime2();
+    console.log(time2Id);
 })
 
 function adicionarPokemonTime1(){
 
     let pokemon1 = document.getElementById('t1-pokemon-1');
-    let pokemon2 = document.getElementById('t1-pokemon-2');
-    let pokemon3 = document.getElementById('t1-pokemon-3');
-    let pokemon4 = document.getElementById('t1-pokemon-4');
-    let pokemon5 = document.getElementById('t1-pokemon-5');
-    let pokemon6 = document.getElementById('t1-pokemon-6');
-
     let pokemonsT1 = new PokemonsT1(pokemon1.value, pokemon2.value, pokemon3.value, pokemon4.value, pokemon5.value, pokemon6.value);
     bancoDados.gravar(pokemonsT1);
 }
@@ -97,11 +116,6 @@ function adicionarPokemonTime1(){
 function adicionarPokemonTime2(){
     let time2 = [];
     let pokemon1 = document.getElementById('t2-pokemon-1');
-    let pokemon2 = document.getElementById('t2-pokemon-2');
-    let pokemon3 = document.getElementById('t2-pokemon-3');
-    let pokemon4 = document.getElementById('t2-pokemon-4');
-    let pokemon5 = document.getElementById('t2-pokemon-5');
-    let pokemon6 = document.getElementById('t2-pokemon-6');
 
     time2.push(pokemon1.value, pokemon2.value, pokemon3.value, pokemon4.value, pokemon5.value, pokemon6.value);
 
@@ -109,23 +123,32 @@ function adicionarPokemonTime2(){
 }
 
 
+ let teamTestePokemon = ['1', '22', '44'];
+
+
+let arrayPokemons = [];
+
+function montaTimePokemon(time){
+        time.forEach(element => {
+        recebeDadosPokemon(element).then(data => arrayPokemons.push(data));
+    });
+}
+
+montaTimePokemon(teamTestePokemon);
 
 function recebeDadosPokemon(id){
-    let pokemons = [];
-
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    
+    return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then(res => res.json())
     .then(data => {
-    let pokemon = {
-        nome: data.name,
-        baseEX: data.base_experience,
-       // img: data['front_default'],
-    } 
-        pokemons.push(pokemon);
+
+        let pokemon = new Pokemon (data.id, data.name, data.base_experience);
+            return pokemon;
     })
-  
-        return pokemons;
+
 }
+
+console.log(arrayPokemons);
 
 
 /*
