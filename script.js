@@ -13,21 +13,55 @@ class PokemonsT1 {
 
 class BancoDados {
 
-    constructor(){
-        let id = localStorage.getItem('id');
+    constructor() {
+        let id = localStorage.getItem('id')
+
         if (id === null){
             localStorage.setItem('id', 0)
         }
     }
-    gravar(pokemons){
-        localStorage.setItem('pokemonsT1', JSON.stringify(pokemons))
-    }
 
     verificarId(){
         let proximoId = localStorage.getItem('id');
-
+        return Number(proximoId) + 1;
     }
+
+
+    gravar(pokemons){
+        let id = this.verificarId();
+
+        localStorage.setItem(id, JSON.stringify(pokemons))
+
+        localStorage.setItem('id', id);
+    }
+
+    recuperarPokemons(){
+        let pokemonsTime = [];
+
+        let id = localStorage.getItem('id');
+
+        for(let i = 1; i<= id; i++){
+            let time1 = JSON.parse(localStorage.getItem(i))
+
+            if (time1 == null) {
+                continue
+            }
+            pokemonsTime.push(time1);
+        }
+
+        console.log(pokemonsTime)
+    }
+
 }
+
+function carregaListaComparacao(){
+    bancoDados.recuperarPokemons()
+
+}
+
+
+
+
 
 let bancoDados = new BancoDados()
 
