@@ -70,3 +70,8 @@ input{
     outline: none;
 }
 
+table, thead{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+}
