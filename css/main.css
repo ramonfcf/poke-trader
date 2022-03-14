@@ -1,6 +1,8 @@
 body {
     width: 100%;
     background-color: rgb(230, 134, 134);
+
+    box-sizing: border-box;
 }
 
 main {
@@ -12,7 +14,7 @@ main {
 .principal__container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
 }
 
@@ -74,4 +76,14 @@ table, thead{
     width: 100%;
     font-size: 20px;
     font-weight: 600;
+}
+
+tr {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+#principal__calcula {
+    width: 90px;
+    margin: 20px 0;
 }

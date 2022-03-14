@@ -51,3 +51,8 @@ function somaBaseExp(time){
 }
 
 calculaTroca(valorBaseExpT1, valorBaseExpT2)
+
+
+
+//criar uma verificação para no máximo 6 pokemons para cada time
+//criar a verifcaçãod de não achar pokemon na api

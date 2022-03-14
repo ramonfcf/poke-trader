@@ -6,8 +6,6 @@ class Pokemon {
         this.id = id,
         this.nome = nome,
         this. baseExp = baseExp;
-
-        console.log(this)
     }
 
 }
@@ -29,10 +27,6 @@ class Registro{
 
     }
 }
-
-let registro = new Registro()
-
-registro.time1[i].nome
 
 class BancoDados {
 
@@ -71,62 +65,118 @@ class BancoDados {
             }
             pokemonsTime.push(time1);
         }
-
         console.log(pokemonsTime)
     }
-
 }
+
+let arrayPokemons = []; //array de pokemons buscados na api de acordo com o id inserido no input do jogador
+let time1PokemonsId = [];
+let time2PokemonsId = [];
+
+
+let registro = new Registro()
+
+/*registro.time1[i].nome
 
 function carregaListaComparacao(){
     bancoDados.recuperarPokemons()
-
 }
-
-
-
-
+*/
 
 let bancoDados = new BancoDados()
 
 
-var time1 = document.querySelector('#botao-time-1');
-let time2 = document.querySelector('#botao-time-2');
+
+
+var botaoTime1 = document.querySelector('#botao-time-1');
+let botaoTime2 = document.querySelector('#botao-time-2');
 
 let pokemon = [];
 
 //Click botão time 1
-time1.addEventListener("click", function(){
-    let time1Id = adicionarPokemonTime1();
+botaoTime1.addEventListener("click", function(){
+    let inputIdPokemonT1 = document.querySelector('#t1-pokemon');
 
-
+    if (inputIdPokemonT1.value == 0){
+        window.alert('Insira um Pokemon no time 1')
+    } else if (inputIdPokemonT1.value <= 0 || inputIdPokemonT1.value > 150){
+        window.alert('Insira o número de um Pokemon entre 1 e 150')
+    } else if (time1PokemonsId.length == 5) {
+        window.alert('O time 1 está completo')
+    }else {
+        adicionarPokemonTime1();
+    }
 })
+
+
+
+
 //Click botão time 2
-time2.addEventListener('click', function(){
-    let time2Id = adicionarPokemonTime2();
-    console.log(time2Id);
+botaoTime2.addEventListener("click", function(){
+    let inputIdPokemonT2 = document.querySelector('#t2-pokemon');
+
+    if (inputIdPokemonT2.value == 0){
+        window.alert('Insira um Pokemon no Time 2')
+    } else if (inputIdPokemonT2.value <= 0 || inputIdPokemonT2.value > 150){
+        window.alert('Insira o número de um Pokemon entre 1 e 150')
+    } else if (time2PokemonsId.length == 5) {
+        window.alert('O time 2 está completo')
+    } else {
+        adicionarPokemonTime2();
+    }
 })
+
+
 
 function adicionarPokemonTime1(){
+    let inputIdPokemonT1 = document.querySelector('#t1-pokemon');
+    var pokemonId = inputIdPokemonT1.value;
+    let tbody = document.querySelector('#tbody-time-1');
 
-    let pokemon1 = document.getElementById('t1-pokemon-1');
-    let pokemonsT1 = new PokemonsT1(pokemon1.value, pokemon2.value, pokemon3.value, pokemon4.value, pokemon5.value, pokemon6.value);
-    bancoDados.gravar(pokemonsT1);
+    let nome = recebeDadosPokemon(inputIdPokemonT1.value).then(data => {
+        let linha = tbody.insertRow('tr')
+        linha.insertCell(0).innerHTML = `${data.nome} - ${data.id}`;
+    })
+
+    time1PokemonsId.push(pokemonId);
+    inputIdPokemonT1.focus();
+
+    console.log(time1PokemonsId)
 }
+
+
+
 
 function adicionarPokemonTime2(){
-    let time2 = [];
-    let pokemon1 = document.getElementById('t2-pokemon-1');
+    let inputIdPokemonT2 = document.querySelector('#t2-pokemon');
+    var pokemonId = inputIdPokemonT2.value;
+    let tbody = document.querySelector('#tbody-time-2');
 
-    time2.push(pokemon1.value, pokemon2.value, pokemon3.value, pokemon4.value, pokemon5.value, pokemon6.value);
+    let nome = recebeDadosPokemon(inputIdPokemonT2.value).then(data => {
+        let linha = tbody.insertRow('tr')
+        linha.insertCell(0).innerHTML = data.nome;
+    })
 
-    return time2;
+    time2PokemonsId.push(pokemonId);
+    inputIdPokemonT2.focus();
+
+    console.log(time2PokemonsId)
 }
 
 
- let teamTestePokemon = ['1', '22', '44'];
 
 
-let arrayPokemons = [];
+
+
+
+
+//let poketeam = ['22', '37', '45'];
+
+
+//montaTimePokemon(poketeam);
+
+
+
 
 function montaTimePokemon(time){
         time.forEach(element => {
@@ -134,10 +184,9 @@ function montaTimePokemon(time){
     });
 }
 
-montaTimePokemon(teamTestePokemon);
 
 function recebeDadosPokemon(id){
-    
+
     return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then(res => res.json())
     .then(data => {
@@ -145,14 +194,7 @@ function recebeDadosPokemon(id){
         let pokemon = new Pokemon (data.id, data.name, data.base_experience);
             return pokemon;
     })
-
 }
 
-console.log(arrayPokemons);
+//console.log(arrayPokemons)
 
-
-/*
-let tbody = document.getElementById('tbody-time-1');
-let linha = tbody.insertRow('tr')
-linha.insertCell(0).innerHTML = pokemon.nome;
-*/
