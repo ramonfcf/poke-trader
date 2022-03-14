@@ -74,11 +74,14 @@ input{
 
 table, thead{
     width: 100%;
-    font-size: 20px;
     font-weight: 600;
 }
 
-tr {
+.principal__tabela {
+    font-size: 18px;
+}
+
+tr, td {
     text-align: center;
     text-transform: capitalize;
 }
@@ -88,3 +91,12 @@ tr {
     width: 90px;
     margin: 20px 0;
 }
+
+.principal__tabela-historico table{
+    background-color: antiquewhite;
+}
+
+.principal__tabela-registro {
+    font-size: 14px;
+}
+

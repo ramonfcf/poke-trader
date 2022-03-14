@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/cabecalho.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body> <!-- onload="carregaListaComparacao()"-->
+<body onload="carregaListaTrades()"> <!-- onload="carregaListaComparacao()"-->
     <header>
         <div class="cabecalho__container">
             <a href="index.html"><img class="cabecalho__logo" src="img/pokemon-logo.webp" alt="Foto logo Pokemon"></a>
@@ -35,7 +35,7 @@
 
                         <button type="button" class="principal__botao-times" id="botao-time-1">Adicionar</button>
                         <div>
-                            <table class="esconde">
+                            <table class="principal__tabela">
                                 <thead>
                                     <th>Pokemons Time 1</th>
                                 </thead>
@@ -51,7 +51,7 @@
 
                         <button type="button" class="principal__botao-times" id="botao-time-2" >Adicionar</button>
                         <div>
-                            <table class="esconde">
+                            <table class="principal__tabela">
                                 <thead>
                                     <th>Pokemons Time 1</th>
                                 </thead>
@@ -67,8 +67,20 @@
             <div class="principal__container">
                 <button type="button" class="principal__botao-times" id="botao-calcular">Calcular</button>
             </div>
-            <div>
-                <!--Tabela? -->
+            <div class="principal__tabela-registro">
+                    <table class="principal__tabela-historico">
+                        <thead >
+                        <tr class="principal__tabela-tr">
+                            <th>Pokemons T1</th>
+                            <th>BasExp</th>
+                            <th>Pokemons T2</th>
+                            <th>BasExp</th>
+                            <th>Troca</th>
+                        </tr>
+                        </thead>
+                    <tbody id="historicoTrade">
+                    </tbody>
+                    </table>
             </div>
         </section>
 
