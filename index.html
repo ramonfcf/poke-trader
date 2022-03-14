@@ -46,9 +46,10 @@
                     </div>
                     <div class="principal__container-times">
                         <h3 class="principal__titulo__times">Time 2</h3>
-                        <input type="text" name="time-1" id="t2-pokemon" placeholder="Pokemon 1">
+                    <div class="principal__container-times">
+                        <input type="text" name="time-1" id="t2-pokemon" placeholder="Pokemon 1" onfocus="this.value=''">
 
-                        <button type="button" class="principal__botao-times" id="botao-time-2">Adicionar</button>
+                        <button type="button" class="principal__botao-times" id="botao-time-2" >Adicionar</button>
                         <div>
                             <table class="esconde">
                                 <thead>
@@ -59,18 +60,20 @@
                             </table>
                         </div>
                     </div>
-
                 </div>
             </form>
-            <div class="principal__container">
-                <button type="button" class="principal__botao-times" id="principal__calcula">Calcular</button>
-            </div>
         </section>
         <section>
-
+            <div class="principal__container">
+                <button type="button" class="principal__botao-times" id="botao-calcular">Calcular</button>
+            </div>
+            <div>
+                <!--Tabela? -->
+            </div>
         </section>
 
     </main>
-    <script src="script.js"></script>
+    <script src="script/classe.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>
