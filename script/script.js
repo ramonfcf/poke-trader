@@ -44,14 +44,11 @@ botaoTime2.addEventListener("click", function(){
 
 //Click botão calcular
 botaoCalcular.addEventListener("click", function(){
-    montaTimePokemon(time1PokemonsId, time1Pokemons);
+    let baseExpT1 = somaBaseExp(time1Pokemons);
+    let baseExpT2 = somaBaseExp(time2Pokemons);
 
-    let baseExpT1 = somaBaseExp(time1Pokemons);    
-    //let baseExpT2 = somaBaseExp(time2Pokemons);
 
-    console.log(baseExpT1)
-   console.log(time1Pokemons)
-
+    calculaTroca(baseExpT1, baseExpT2);
 })
 
 // Função que recebe dado do input do time um, busca o nome e id na api e insere no html pra visualização do usuário, adiciona a id no time1PokemonsId
@@ -62,7 +59,8 @@ function adicionarPokemonTime1(){
 
     let nome = recebeDadosPokemon(inputIdPokemonT1.value).then(data => {
         let linha = tbody.insertRow('tr')
-        linha.insertCell(0).innerHTML = `${data.nome} - ${data.id}`;
+        linha.insertCell(0).innerHTML = `${data.nome} - ${data.id}`
+        time1Pokemons.push(data);
     })
 
     time1PokemonsId.push(pokemonId);
@@ -75,9 +73,11 @@ function adicionarPokemonTime2(){
     var pokemonId = inputIdPokemonT2.value;
     let tbody = document.querySelector('#tbody-time-2');
 
-    let nome = recebeDadosPokemon(inputIdPokemonT2.value).then(data => {
+        recebeDadosPokemon(inputIdPokemonT2.value).then(data => {
         let linha = tbody.insertRow('tr')
         linha.insertCell(0).innerHTML = data.nome;
+        time2Pokemons.push(data);
+
     })
 
     time2PokemonsId.push(pokemonId);
@@ -87,9 +87,7 @@ function adicionarPokemonTime2(){
 
 //função com foreach para montar time pokemon
 function montaTimePokemon(time, variavel){
-        time.forEach(element => {
-        recebeDadosPokemon(element).then(data => variavel.push(data));
-    });
+    let testando = recebeDadosPokemon(time).then(data => variavel.push(data));
 }
 
 //função que busca dados do pokemon na api
@@ -109,17 +107,18 @@ function recebeDadosPokemon(id){
 function calculaTroca(t1, t2){
     if (t1 < t2) {
         let diferenca = (t2 * 0.9).toFixed(2);
+        console.log(diferenca)
         if(t1 > diferenca){
-            console.log('troca Justa')
+            window.alert('troca Justa')
         } else {
-            console.log('troca injusta')
+            window.alert(`Troca Injusta. O valor do Base Experience do time 1 (${t1}) é muito baixo em relação ao time 2  (${t2}).`)
         }
     } else {
         let diferenca = (t1 * 0.9).toFixed(2);
         if(t2 > diferenca){
-            console.log('troca Justa')
+            window.alert(`Troca Justa`)
         } else {
-            console.log('troca injusta')
+            window.alert(`Troca Injusta. O valor do Base Experience do time 2 (${t2}) é muito baixo em relação ao time 2  (${t1}).`)
         }
     }
 }
@@ -127,50 +126,13 @@ function calculaTroca(t1, t2){
 // função que soma todas as base experience dos pokemons de um time.
 function somaBaseExp(time){
     let resultadoSoma = 0;
-    console.log(time[0]);
-
     for (let i = 0; i < time.length; i++){
         let base_experience = time[i].baseExp;
-        console.log(base_experience);
         resultadoSoma = resultadoSoma + base_experience;
     }
 
     return resultadoSoma;
 }
-
-//console.log(arrayPokemons)
-
-
-
-
-
-
-// SEPARANDO
-/*let pokemons = [
-    {nome:'bulbasaur', base_experience: 64},
-    {nome:'ivysaur', base_experience: 142},
-    {nome:'venusaur', base_experience: 263},
-    {nome:'charmander', base_experience: 62},
-    {nome:'charmeleon', base_experience: 142},
-    {nome:'charizard', base_experience: 267},
-    {nome:'squirtle', base_experience: 63}
-]
-
-
-let team1 = [pokemons[2], pokemons[4], pokemons[5]];
-let team2 = [pokemons[0], pokemons[5], pokemons[2]];
-
-
-let valorBaseExpT1 = somaBaseExp(team1);  // 473
-let valorBaseExpT2 = somaBaseExp(team2);  // 672
-
-console.log(valorBaseExpT1)
-console.log(valorBaseExpT2)
-
-*/
-
-
-//calculaTroca(valorBaseExpT1, valorBaseExpT2)
 
 
 

@@ -15,7 +15,7 @@ class Registro{
     baseExpT1
     time2
     baseExpT2
-
+    
     constructor(time1, baseExpSomaT1, time2, baseExpSomaT2){
         this.time1 = time1;
         this.baseExpT1 = baseExpSomaT1;
