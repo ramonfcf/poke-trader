@@ -1,0 +1,17 @@
+.tabela__lista {
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+table {
+    text-transform: capitalize;
+}
+
+td {
+    vertical-align: middle;
+}
+
+img {
+    width: 50px;
+}

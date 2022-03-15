@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poke-Trade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/cabecalho.css">
+    <link rel="stylesheet" href="css/principal.css">
+    <link rel="stylesheet" href="css/lista.css">
+</head>
+<body>
+    <header>
+        <div class="cabecalho__container">
+            <a href="index.html"><img class="cabecalho__logo" src="img/pokemon-logo.webp" alt="Foto logo Pokemon"></a>
+            <div>
+                <a href="index.html"><h1 class="cabecalho__titulo">Poke-Trader</h1></a>
+                <a href="lista-pokemons.html" class="cabecalho__link">Poke-Lista</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div>
+                <h2 class="principal__titulo">Lista de Pokemons</h2>
+            </div>
+        </section>
+        <div class="principal__container">
+            <table class="tabela__lista">
+                <thead>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Foto</th>
+                </thead>
+                <tbody id="lista__pokemons">
+    
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </main>
+    <script src="script/classe.js"></script>
+    <script src="script/lista.js"></script>
+</body>
+
+</html>

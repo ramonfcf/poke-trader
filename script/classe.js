@@ -2,12 +2,10 @@ class Pokemon {
     id
     nome
     baseExp
-    foto
-    constructor(id, nome, baseExp, foto) {
+    constructor(id, nome, baseExp) {
         this.id = id,
         this.nome = nome,
         this.baseExp = baseExp;
-        this.foto = foto;
     }
 
 }

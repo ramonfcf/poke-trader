@@ -97,7 +97,7 @@ function adicionarPokemonTime2(){
 
 //função com foreach para montar time pokemon
 function montaTimePokemon(time, variavel){
-    let testando = recebeDadosPokemon(time).then(data => variavel.push(data));
+    recebeDadosPokemon(time).then(data => variavel.push(data));
 }
 
 //função que busca dados do pokemon na api
@@ -107,7 +107,7 @@ function recebeDadosPokemon(id){
     .then(res => res.json())
     .then(data => {
 
-        let pokemon = new Pokemon (data.id, data.name, data.base_experience, data.front_default);
+        let pokemon = new Pokemon (data.id, data.name, data.base_experience);
             return pokemon;
     })
 }

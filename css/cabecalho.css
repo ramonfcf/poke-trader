@@ -25,9 +25,23 @@ header {
 .cabecalho__titulo{
     color: rgb(179, 19, 8);
     font-weight: 600;
-    font-size: 52px;
+    font-size: 40px;
     text-shadow: 2px 2px 2px #7A7A7A, 2px 1px 6px rgba(206,206,206,0);
 
+}
+
+.cabecalho__titulo:hover{
+    color: rgb(201, 33, 21);
+}
+
+
+.cabecalho__link {
+    font-size: 20px;
+}
+.cabecalho__link:hover {
+    font-size: 21px;
+    transition: .2s;
+    color: black    ;
 }
 
 @media screen and (max-width: 520px) {
