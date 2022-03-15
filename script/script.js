@@ -69,7 +69,7 @@ function adicionarPokemonTime1(){
     let inputIdPokemonT1 = document.querySelector('#t1-pokemon');
     let tbody = document.querySelector('#tbody-time-1');
 
-        recebeDadosPokemon(inputIdPokemonT1.value).then(data => {
+        recebeDadosPokemon(inputIdPokemonT1.value.toLowerCase()).then(data => {
         let linha = tbody.insertRow('tr')
         let img = tbody.insertRow('tr')
         linha.insertCell(0).innerHTML = `${data.id} -${data.nome}`;
@@ -84,7 +84,7 @@ function adicionarPokemonTime2(){
     let inputIdPokemonT2 = document.querySelector('#t2-pokemon');
     let tbody = document.querySelector('#tbody-time-2');
 
-        recebeDadosPokemon(inputIdPokemonT2.value).then(data => {
+        recebeDadosPokemon(inputIdPokemonT2.value.toLowerCase()).then(data => {
             let linha = tbody.insertRow('tr')
             let img = tbody.insertRow('tr')
             linha.insertCell(0).innerHTML = `${data.id} -${data.nome}`;
