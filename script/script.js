@@ -17,7 +17,7 @@ botaoTime1.addEventListener("click", function(){
         window.alert('Insira um Pokemon no time 1')
     } else if (inputIdPokemonT1.value <= 0 || inputIdPokemonT1.value > 150){
         window.alert('Insira o número de um Pokemon entre 1 e 150')
-    } else if (time1Pokemons.length == 5) {
+    } else if (time1Pokemons.length == 6) {
         window.alert('O time 1 está completo')
     }else {
         adicionarPokemonTime1();
@@ -32,7 +32,7 @@ botaoTime2.addEventListener("click", function(){
         window.alert('Insira um Pokemon no Time 2')
     } else if (inputIdPokemonT2.value <= 0 || inputIdPokemonT2.value > 150){
         window.alert('Insira o número de um Pokemon entre 1 e 150')
-    } else if (time2Pokemons.length == 5) {
+    } else if (time2Pokemons.length == 6) {
         window.alert('O time 2 está completo')
     } else {
         adicionarPokemonTime2();
