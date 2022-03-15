@@ -25,14 +25,6 @@ class Registro{
         this.baseExpT2 = baseExpSomaT2;
         this.resultado = resultado;
     }
-
-    imprimir(){
-
-    }
-
-    trocaJusta(){
-        
-    }
 }
 
 class BancoDados {

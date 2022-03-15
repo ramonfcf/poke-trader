@@ -25,5 +25,17 @@ header {
 .cabecalho__titulo{
     color: rgb(179, 19, 8);
     font-weight: 600;
-    font-size: 60px;
+    font-size: 52px;
+    text-shadow: 2px 2px 2px #7A7A7A, 2px 1px 6px rgba(206,206,206,0);
+
+}
+
+@media screen and (max-width: 520px) {
+    .cabecalho__titulo{
+        font-size: 25px;
+    }
+
+    .cabecalho__logo{
+        width: 85px;
+    }
 }
