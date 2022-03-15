@@ -41,6 +41,18 @@ main {
     font-weight: 600;
 }
 
+p {
+    padding: 0px 16px 6px 15px;
+    line-height: 20px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.principal__link-p {
+    color: rgba(228, 25, 69, 0.767);
+    font-weight: 600;
+}
+
 .principal__botao-times {
     padding: 12px 0;
     margin: 8px 0 18px 0;

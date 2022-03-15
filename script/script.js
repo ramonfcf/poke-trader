@@ -184,7 +184,3 @@ function carregaListaTrades(){
         linha.insertCell(4).innerHTML = `${d.resultado}`;
     });
 }
-
-
-// lista pokemon
-
