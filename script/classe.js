@@ -77,24 +77,3 @@ class BancoDados {
        return registros;
     }
 }
-
-function carregaListaTrades(){
-    
-    let registros = [];
-    registros = bancoDados.recuperarPokemons();
-
-    console.log(registros);
-
-    let listaRegistros = document.getElementById('historicoTrade');
-
-
-    registros.forEach(d => {
-        let linha = listaRegistros.insertRow();
-
-        linha.insertCell(0).innerHTML = `${d.time1}`;
-        linha.insertCell(1).innerHTML = `${d.baseExpT1}`;
-        linha.insertCell(2).innerHTML = `${d.time2}`;
-        linha.insertCell(3).innerHTML = `${d.baseExpT2}`;
-        linha.insertCell(4).innerHTML = `${d.resultado}`;
-    });
-}

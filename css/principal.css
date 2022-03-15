@@ -6,7 +6,7 @@ body {
 }
 
 main {
-    width: 65%;
+    width: 70%;
     margin: 10px auto;
     background-color: rgb(233, 195, 195);
 }
@@ -72,18 +72,20 @@ input{
     outline: none;
 }
 
-table, thead{
-    width: 100%;
-    font-weight: 600;
+table {
+    border-radius: 6px;
+    overflow: hidden;
+
 }
 
 .principal__tabela {
-    font-size: 18px;
-}
-
-tr, td {
-    text-align: center;
-    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 600;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #botao-calcular {
@@ -92,11 +94,25 @@ tr, td {
     margin: 20px 0;
 }
 
-.principal__tabela-historico table{
-    background-color: antiquewhite;
+.principal__tabela-registro{
+    width: 100%;
 }
 
-.principal__tabela-registro {
-    font-size: 14px;
+
+.principal__tabela-historico:nth-child(1n), #historicoTrade:nth-child(1n) {
+    border:  1px rgba(19, 5, 5, 0.425);
+    font-size: 16px;
+    text-align: center;
+    text-transform: capitalize;
 }
 
+td, .principal__tabela-th {
+    text-align: center;
+    border: double 3px rgba(19, 5, 5, 0.425);
+    padding: 0 2px;
+}
+
+.thead_registro{
+    font-size: 18px;
+    font-weight: 600;
+}

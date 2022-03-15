@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/cabecalho.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/principal.css">
 </head>
 <body onload="carregaListaTrades()"> <!-- onload="carregaListaComparacao()"-->
     <header>
@@ -67,15 +67,15 @@
             <div class="principal__container">
                 <button type="button" class="principal__botao-times" id="botao-calcular">Calcular</button>
             </div>
-            <div class="principal__tabela-registro">
+            <div class="principal__container teste">
                     <table class="principal__tabela-historico">
-                        <thead >
+                        <thead class="thead_registro">
                         <tr class="principal__tabela-tr">
-                            <th>Pokemons T1</th>
-                            <th>BasExp</th>
-                            <th>Pokemons T2</th>
-                            <th>BasExp</th>
-                            <th>Troca</th>
+                            <th class="principal__tabela-th">Pokemons T1</th>
+                            <th class="principal__tabela-th">BasExp</th>
+                            <th class="principal__tabela-th">Pokemons T2</th>
+                            <th class="principal__tabela-th">BasExp</th>
+                            <th class="principal__tabela-th">Troca</th>
                         </tr>
                         </thead>
                     <tbody id="historicoTrade">

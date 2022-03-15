@@ -7,7 +7,7 @@ let botaoTime1 = document.querySelector('#botao-time-1');
 let botaoTime2 = document.querySelector('#botao-time-2');
 let botaoCalcular = document.querySelector('#botao-calcular')
 
-let trocaJusta = '';
+let resultado = '';
 
 //Click botão time 1
 botaoTime1.addEventListener("click", function(){
@@ -41,6 +41,11 @@ botaoTime2.addEventListener("click", function(){
 
 //Click botão calcular
 botaoCalcular.addEventListener("click", function(){
+    if (time1Pokemons.length == 0 || time2Pokemons.length ==0){
+        window.alert('Adicione Pokemons nos dois times')
+        return
+    }
+    
     let baseExpT1 = somaBaseExp(time1Pokemons);
     let baseExpT2 = somaBaseExp(time2Pokemons);
 
@@ -51,10 +56,12 @@ botaoCalcular.addEventListener("click", function(){
     let nomesPokemonsT2 = nomesPokemonsTime(time2Pokemons);
 
     
-    console.log(trocaJusta);
-    let registro = new Registro(nomesPokemonsT1, baseExpT1, nomesPokemonsT2, baseExpT2, trocaJusta)
+    console.log(resultado);
+    let registro = new Registro(nomesPokemonsT1, baseExpT1, nomesPokemonsT2, baseExpT2, resultado)
 
     bancoDados.gravar(registro);
+
+    location.reload();
 })
 
 // Função que recebe dado do input do time um, busca o nome e id na api e insere no html pra visualização do usuário, adiciona a id no time1PokemonsId
@@ -64,8 +71,10 @@ function adicionarPokemonTime1(){
 
     let nome = recebeDadosPokemon(inputIdPokemonT1.value).then(data => {
         let linha = tbody.insertRow('tr')
+        let img = tbody.insertRow('tr')
         linha.insertCell(0).innerHTML = `${data.id} -${data.nome}`;
         time1Pokemons.push(data);
+        img.insertCell(0).innerHTML= `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png"/>`;
     })
     inputIdPokemonT1.focus();
 }
@@ -76,10 +85,11 @@ function adicionarPokemonTime2(){
     let tbody = document.querySelector('#tbody-time-2');
 
         recebeDadosPokemon(inputIdPokemonT2.value).then(data => {
-        let linha = tbody.insertRow('tr')
-        linha.insertCell(0).innerHTML = `${data.id} -${data.nome}`;
-        time2Pokemons.push(data);
-
+            let linha = tbody.insertRow('tr')
+            let img = tbody.insertRow('tr')
+            linha.insertCell(0).innerHTML = `${data.id} -${data.nome}`;
+            time2Pokemons.push(data);
+            img.insertCell(0).innerHTML= `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png"/>`;
     })
     inputIdPokemonT2.focus();
 }
@@ -108,25 +118,25 @@ function calculaTroca(t1, t2){
 
     if (t1 < t2) {
     
-        let diferenca = (t2 * 0.9).toFixed(2);
+        let diferenca = (t2 * 0.8).toFixed(2);
 
         if(t1 > diferenca){
-            trocaJusta = 'Troca Justa';
+            resultado = 'Troca Justa';
             window.alert('troca Justa')
         } else {
-            trocaJusta = 'Troca Injusta';
+            resultado = 'Troca Injusta';
             window.alert(`Troca Injusta. O valor do Base Experience do time 1 (${t1}) é muito baixo em relação ao time 2  (${t2}).`)
         }
 
      } else {
 
-        let diferenca = (t1 * 0.9).toFixed(2);
+        let diferenca = (t1 * 0.8).toFixed(2);
 
         if(t2 > diferenca){
-            trocaJusta = 'Troca Justa';
+            resultado = 'Troca Justa';
             window.alert(`Troca Justa`)
         } else {
-            trocaJusta = 'Troca Injusta';
+            resultado = 'Troca Injusta';
             window.alert(`Troca Injusta. O valor do Base Experience do time 2 (${t2}) é muito baixo em relação ao time 1  (${t1}).`)
         }
     }
@@ -154,13 +164,27 @@ function nomesPokemonsTime(time){
 }
 
 
-//criar uma verificação para no máximo 6 pokemons para cada time
-//criar a verifcaçãod de não achar pokemon na api
+function carregaListaTrades(){
+    
+    let registros = [];
+    registros = bancoDados.recuperarPokemons();
+
+    console.log(registros);
+
+    let listaRegistros = document.getElementById('historicoTrade');
 
 
-/*registro.time1[i].nome
-
-function carregaListaComparacao(){
-    bancoDados.recuperarPokemons()
+    registros.forEach(d => {
+        let linha = listaRegistros.insertRow();
+        linha.classList.add('principal__tabela-historicos')
+        linha.insertCell(0).innerHTML = `${d.time1}`;
+        linha.insertCell(1).innerHTML = `${d.baseExpT1}`;
+        linha.insertCell(2).innerHTML = `${d.time2}`;
+        linha.insertCell(3).innerHTML = `${d.baseExpT2}`;
+        linha.insertCell(4).innerHTML = `${d.resultado}`;
+    });
 }
-*/
+
+
+// lista pokemon
+
