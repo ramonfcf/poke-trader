@@ -55,8 +55,6 @@ botaoCalcular.addEventListener("click", function(){
     let nomesPokemonsT1 = nomesPokemonsTime(time1Pokemons);
     let nomesPokemonsT2 = nomesPokemonsTime(time2Pokemons);
 
-    
-    console.log(resultado);
     let registro = new Registro(nomesPokemonsT1, baseExpT1, nomesPokemonsT2, baseExpT2, resultado)
 
     bancoDados.gravar(registro);
@@ -94,11 +92,6 @@ function adicionarPokemonTime2(){
     inputIdPokemonT2.focus();
 }
 
-
-//função com foreach para montar time pokemon
-function montaTimePokemon(time, variavel){
-    recebeDadosPokemon(time).then(data => variavel.push(data));
-}
 
 //função que busca dados do pokemon na api
 function recebeDadosPokemon(id){
@@ -169,10 +162,7 @@ function carregaListaTrades(){
     let registros = [];
     registros = bancoDados.recuperarPokemons();
 
-    console.log(registros);
-
     let listaRegistros = document.getElementById('historicoTrade');
-
 
     registros.forEach(d => {
         let linha = listaRegistros.insertRow();
